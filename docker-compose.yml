@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    container_name: elixir_postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    user: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=elixir_postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

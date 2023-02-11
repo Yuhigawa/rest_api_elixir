@@ -2,20 +2,19 @@
 
 **TODO: Add description**
 
-## Installation
+## initialization
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `rest_api` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:rest_api, "~> 0.1.0"}
-  ]
-end
+```bash
+<!-- For docker with Postgres -->
+~> docker compose up -d
+~> docker compose exec postgres psql -U postgres -c "CREATE DATABASE elixir_postgres;"
+~> docker compose exec postgres psql -U postgres -c "GRANT ALL PRIVILEGES ON elixir_postgres TO postgres;"
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/rest_api>.
-
+```bash
+<!-- For Elixir -->
+~> mix dps.get
+~> mix ecto.create
+~> mix ecto.migrate
+~> iex -S mix run
+```
